@@ -1,39 +1,141 @@
 .App {
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.adminPanel {
+    margin-top: 20px;
+    margin-right: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.container {
+    width: 90%;
+    margin: 1rem;
+    display: flex;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.withdrawCard {
+    min-width: 270px;
+    height: 230px;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.ATMContainer {
+    padding: 2rem;
+    margin-right: 50%;
+    transform: translateX(50%);
+    width: 30%;
+    min-width: 350px;
+    min-height: 700px;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 12px;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+/* ShopComponent */
+.shopContainer {
+    height: 68%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    border-radius: 12px;
+}
+
+.shopShelf {
+    width: 50%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shopShelf>* {
+    width: 80%;
+    height: 80%;
+}
+
+.noProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.dataBaseError {
+    width: 100%;
+}
+
+.noProductIcon {
+    font-size: 50px;
+    color: gray;
+}
+
+.techMenu {
+    height: 30%;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* OperationComponent */
+.userIntrfaceContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.balance {
+    height: 100px;
+    text-align: center;
+    color: greenyellow;
+    background-color: black;
+    border-radius: 12px;
+    padding: 1px;
+}
+
+.buyProduct {
+    height: 90px;
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+/* CashOperationComponent */
+.operationButtons {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.depositCash {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+.depositCash>* {
+    margin: 0.5rem;
+}
+
+.withdrawCash {
+    width: 100%;
 }

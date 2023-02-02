@@ -1,58 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'antd';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+import OperationComponent from './app/components/OperationComponent';
+import ShopComponent from './app/components/ShopComponent';
+import WithdrawComponent from './app/components/WithdrawComponent';
+import { RootState } from './app/store';
+
+const App: React.FC = (): JSX.Element => {
+    const dispatch = useDispatch();
+
+    const count = useSelector((state: RootState) => state.machineData.count);
+    
+    useEffect(() => {
+        dispatch({ type: 'GET_MACHINE_DATA_FROM_JSON' });
+    }, []);
+
+    const resetMchineData = () => {
+        dispatch({ type: 'RESET_MACHINE_DATA' });
+    }
+
+    return (
+        <div className='App'>
+            <div className='adminPanel'>
+                <Button type='primary' style={count === 0 ? {background: 'red'} : {background: 'grey'}} onClick={() => resetMchineData()}>
+                    Обновить магазин
+                </Button>
+            </div>
+            <div className='container'>
+                <WithdrawComponent />
+                <div className='ATMContainer'>
+                    <ShopComponent />
+                    <OperationComponent />
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
