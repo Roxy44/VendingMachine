@@ -8,14 +8,6 @@ import initialData from '../reducers/initialData';
 
 function* getDataFromJson() {
     try {
-        // const {data: products} = yield call(axios.get, 'http://localhost:5000/products');
-        // const {data: withdraw} = yield call(axios.get, 'http://localhost:5000/withdraw');
-        // const {data: user} = yield call(axios.get, 'http://localhost:5000/user');
-        // const productCount = products.map((item: {name: string, price: number, count: number}) => item.count).reduce((count: number, curr: number) => count + curr, 0);
-        // yield put({ type: 'SET_PRODUCT_DATA', payload: products });
-        // yield put({ type: 'SET_MACHINE_WITHDRAW', payload: withdraw });
-        // yield put({ type: 'SET_MACHINE_BALANCE', payload: user.balance });
-        // yield put({ type: 'SET_PRODUCT_COUNT', payload: productCount });
         const { data } = yield call(axios.get, 'http://localhost:5000/machine');
         const productCount = data.products.map((item: {name: string, price: number, count: number}) => item.count).reduce((count: number, curr: number) => count + curr, 0);
         yield put({ type: 'SET_PRODUCT_DATA', payload: data.products });
