@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "36888bb5633f8c727191",
+    "revision": "1adc108d936105167e92",
     "url": "/VendingMachine/static/css/main.1074c32b.chunk.css"
   },
   {
-    "revision": "36888bb5633f8c727191",
-    "url": "/VendingMachine/static/js/main.aa366368.chunk.js"
+    "revision": "1adc108d936105167e92",
+    "url": "/VendingMachine/static/js/main.099e93ca.chunk.js"
   },
   {
     "revision": "0bbb0d0e2062377eb41b",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/VendingMachine/static/js/2.ff76d6a5.chunk.js"
   },
   {
-    "revision": "7035e116c55151aa59b4648965d45a29",
+    "revision": "f72241821a6114d3badf2fee343b7a80",
     "url": "/VendingMachine/index.html"
   }
 ];
