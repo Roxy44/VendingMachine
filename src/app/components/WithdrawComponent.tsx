@@ -8,7 +8,7 @@ const WithdrawComponent: React.FC = () => {
     const withdraw: withdrawType[] = useSelector((state: RootState) => state.machineData.withdraw);
 
     return (
-        <Card title="Валюта банкомата" className='withdrawCard'>
+        <Card title="Валюта автомата" className='withdrawCard'>
             {withdraw.map((item, index) => (
                 <div key={index}>Номинал: {item.value}, количетсво: {item.count}</div>
             ))}

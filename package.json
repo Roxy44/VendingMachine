@@ -14,7 +14,6 @@
     "@types/react-dom": "^18.0.10",
     "antd": "^5.1.6",
     "axios": "^1.2.5",
-    "json-server": "^0.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -26,8 +25,8 @@
     "webpack": "webpack -w",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "concurrently \"(react-scripts --openssl-legacy-provider start)\" \"(json-server -p 5000 --watch src/server.json)\"",
-    "build": "concurrently \"(react-scripts build)\" \"(json-server -p 5000 --watch src/server.json)\"",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,7 +43,6 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
     "gh-pages": "^5.0.0"
   }
 }

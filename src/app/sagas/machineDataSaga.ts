@@ -6,9 +6,11 @@ import axios from 'axios';
 
 import initialData from '../reducers/initialData';
 
+const serverUrlAddress = 'https://vendingmachineserver.onrender.com';
+
 function* getDataFromJson() {
     try {
-        const { data } = yield call(axios.get, 'http://localhost:5000/machine');
+        const { data } = yield call(axios.get, `${serverUrlAddress}/machine`);
         const productCount = data.products.map((item: {name: string, price: number, count: number}) => item.count).reduce((count: number, curr: number) => count + curr, 0);
         yield put({ type: 'SET_PRODUCT_DATA', payload: data.products });
         yield put({ type: 'SET_MACHINE_WITHDRAW', payload: data.withdraw });
@@ -22,7 +24,7 @@ function* getDataFromJson() {
 function* increaseMachineBalance(payload: payloadType) {
     try {
         const { balance, products } = yield select((state: RootState) => state.machineData);
-        yield call(axios.post, 'http://localhost:5000/machine', {
+        yield call(axios.post, `${serverUrlAddress}/machine`, {
             products,
             withdraw: payload.changedWithdraw,
             balance: balance + payload.cashValue
@@ -37,7 +39,7 @@ function* decreaseMachineBalance(payload: payloadType) {
     try {
         const { products } = yield select((state: RootState) => state.machineData);
         const changedProduct = payload.changedProduct.length ? payload.changedProduct : products
-        yield call(axios.post, 'http://localhost:5000/machine', {
+        yield call(axios.post, `${serverUrlAddress}/machine`, {
             products: changedProduct,
             withdraw: payload.changedWithdraw,
             balance: 0
@@ -51,7 +53,7 @@ function* decreaseMachineBalance(payload: payloadType) {
 function* changeMachineProduct(payload: payloadType) {
     try {
         const { withdraw, balance } = yield select((state: RootState) => state.machineData);
-        yield call(axios.post, 'http://localhost:5000/machine', {
+        yield call(axios.post, `${serverUrlAddress}/machine`, {
             products: payload.changedProduct,
             withdraw,
             balance
@@ -65,7 +67,7 @@ function* changeMachineProduct(payload: payloadType) {
 function* getProductAndChangeData(payload: payloadType) {
     try {
         const { balance, withdraw } = yield select((state: RootState) => state.machineData);
-        yield call(axios.post, 'http://localhost:5000/machine', {
+        yield call(axios.post, `${serverUrlAddress}/machine`, {
             products: payload.changedProduct,
             withdraw,
             balance: payload.price ? (balance - payload.price) : balance
@@ -78,7 +80,7 @@ function* getProductAndChangeData(payload: payloadType) {
 
 function* resetMachineData() {
     try {
-        yield call(axios.post, 'http://localhost:5000/machine', initialData);
+        yield call(axios.post, `${serverUrlAddress}/machine`, initialData);
         yield call(getDataFromJson);
     } catch (e) {
         message.error('Error');
