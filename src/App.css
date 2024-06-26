@@ -3,19 +3,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 20px 40px 20xp 0;
 }
 
 .adminPanel {
-    margin-top: 20px;
-    margin-right: 40px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 10px;
 }
 
 .container {
     width: 90%;
-    margin: 1rem;
     display: flex;
 }
 
